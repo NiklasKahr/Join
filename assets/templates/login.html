@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="../img/contacts/join-logo.svg">
+    <script src="../js/main.js"></script>
+    <script src="../js/users.js"></script>
+    <script src="../js/mini_backend.js"></script>
+    <title>Login</title>
+</head>
+
+<body onload="init()">
+    <header>
+        <div class="signUp-container">
+            <p class="signUp-text">Not a Join user?</p>
+            <a href="signup.html"><img class="signUp-btn btn" src="../img/login/signUp-btn.png" alt=""></a>
+            <a class="logout-btn d-none" onclick="logout()" id="nav-log"></a>
+        </div>
+        <img class="join-logo" src="../img/sidebar/join-logo.png" alt="">
+    </header>
+    <main>
+        <div class="login-container container-layout">
+            <h1>Log in</h1>
+            <div class="blue-line"></div>
+            <form class="formstyle"  onsubmit="getInfo(); return false;">
+                <input class="input bg-email" type="email" name="" placeholder="Email" id="email">
+
+
+                <input class="input bg-password mt-49" type="password" name="" placeholder="Password" id="password">
+                <span class="spanstyle d-none" id="alertspan">Email oder Passwort stimmen nicht überein</span>
+                <span class="spanstylelog d-none" id="alertspanloggin">Erfolgreich eingeloggt !</span>
+
+                <div class="forgotpassword-container">
+                    <div class="checkbox-container">
+                        <input class="checkbox" type="checkbox">
+                        <p class="remember-text">Remember me</p>
+                    </div>
+                    <a href="forgotpassword.html">
+                        <p class="forgot-text">Forgot my password</p>
+                    </a>
+                </div>
+                <div class="btn-line">
+                    <button type="submit" id="log-in" class="loginbtn">Log in</button>
+                    <a class="guestlog" href="index.html">Guest Log in</a>
+                    
+                  </div>
+                <!--<div class="login-btn-container">
+                    <img class="btn btn-mobile" src="../img/login/login-btn.png" onclick="getInfo(); return false;">
+                    <a href="summary.html"><img class="btn btn-mobile" src="../img/login/guestlogin-btn.png"></a>
+                </div>-->
+            </form>
+        </div>
+        </div>
+    </main>
+    <div class="signUp-container-bottom">
+        <p class="signUp-text">Not a Join user?</p>
+        <a href="signup.html"><img class="signUp-btn-bottom btn" src="../img/login/signUp-btn.png" alt=""></a>
+    </div>
+    <button onclick="clearUsers()" class="display-none">Clear Backend(DEV-Btn)</button>
+</body>
+
+</html>

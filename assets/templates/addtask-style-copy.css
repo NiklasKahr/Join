@@ -1,0 +1,11 @@
+
+
+.pointer:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.color-selected {
+    transform: scale(1.4);
+}
+

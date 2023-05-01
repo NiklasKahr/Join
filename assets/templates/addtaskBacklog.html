@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addtask-style.css">
+    <link rel="stylesheet" href="addtaskBacklog.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="../img/contacts/join-logo.svg">
+    <script src="../js/mini_backend.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/addtask.js"></script>
+    <script src="../js/contacts.js"></script>
+    <script src="../js/templates/addtask-templates.js"></script>
+    <title>AddTask Backlog</title>
+</head>
+
+<body>
+    <div class="add-task-content">
+        <div class="content-left">
+            <div class="margin-left">
+                <h1>Add Task</h1>
+                <div class="title-box">
+                    <p class="title-font">Title</p>
+                    <p class="font-red" id="missingTitle"></p>
+                    <input id="title" class="title-inputfield input-font" type="text"
+                        placeholder="Enter a title">
+                </div>
+                <div class="description-box">
+                    <p class="description-font">Description</p>
+                    <p class="font-red" id="missingDescription"></p>
+                    <textarea id="description" class="description-inputfield input-font" type="text"
+                        placeholder="Enter a Description"></textarea>
+                </div>
+                <div class="category-box" id="categoryContainer">
+
+                    <!-- Render Category -->
+
+                </div>
+
+                <div class="assigned-box" id="contactContainer">
+
+                    <!-- Render Contacts -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="parting-line"></div>
+
+        <div class="content-right">
+            <div>
+                <div class="date-box">
+                    <p class="date-font">Due date</p>
+                    <p class="font-red" id="missingDate"></p>
+                    <input id="date" class="date-inputfield input-font" type="date" lang="en-US"
+                        placeholder="dd/mm/yyyy" onclick="(this.type='date')" onblur="(this.type='date')">
+                </div>
+                <div class="prio-box">
+                    <p class="prio-font">Prio</p>
+                    <p class="font-red" id="missingPrio"></p>
+                    <div class="prio-choice">
+                        <button onclick="changePrio(0)" class="prio-inputfield-urgent">
+                            <img id="urgentClicked" class="display-none" src="../img/AddTask/urgent-btn-clicked.png">
+                            <img id="urgent" class="" src="../img/AddTask/urgent-btn.png"></button>
+                        <button onclick="changePrio(1)" class="prio-inputfield-medium">
+                            <img id="mediumClicked" class="display-none" src="../img/AddTask/medium-btn-clicked.png">
+                            <img id="medium" src="../img/AddTask/medium-btn.png"></button>
+                        <button onclick="changePrio(2)" class="prio-inputfield-low">
+                            <img id="lowClicked" class="display-none" src="../img/AddTask/low-btn-clicked.png">
+                            <img id="low" src="../img/AddTask/low-btn.png"></button>
+                    </div>
+                </div>
+                <div class="subtask-box">
+                    <p class="subtask-font">Subtasks</p>
+                    <div class="subtask-inputfield input-font">
+                        <input id="subtask" class="outline-none" type="text" placeholder="Add new subtask">
+                        <img onclick="addSubTask()" class="hover-btn" src="../img/AddTask/plus.png">
+                    </div>
+                    <div id="subtasks">
+
+                        <!-- Render Subtasks -->
+                        
+                    </div>
+                </div>
+                <div class="create-cancel-container">
+                    <img onclick="clearTasks()" class="cancel-btn" src="../img/AddTask/cancel-btn.png">
+                    <img onclick="addToTask()" class="create-btn" src="../img/AddTask/createTask-btn.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

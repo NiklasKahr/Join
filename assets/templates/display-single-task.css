@@ -1,0 +1,139 @@
+.main-display-single-task-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 50px;
+	gap: 25px;
+	isolation: isolate;
+	width: 623px;
+	height: 700px;
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 14px;
+	position: relative;
+}
+
+.display-single-task-headline {
+	padding: 4px 36.5px;
+	gap: 10px;
+	background-color: lightgray;
+	width: 150px;
+	height: 40px;
+	border-radius: 14px;
+	
+}
+
+.display-single-task-headline h4 {
+	font-weight: 400;
+	font-size: 27px;
+	color: #ffffff;
+	align-items: center;
+	
+}
+
+.display-single-task-title {
+	padding: 0px;
+	gap: 1px;
+	width: 523px;
+	height: 146px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.display-single-task-title h2 {
+	font-weight: 700;
+	font-size: 49px;
+	color: #2a3647;
+}
+
+.display-single-task-description span {
+	font-weight: 400;
+	font-size: 21px;
+}
+
+.display-single-task-date {
+	padding: 0px;
+	gap: 25px;
+	width: 270px;
+	height: 25px;
+}
+
+.display-single-task-date table tr td:first-child {
+	font-weight: 700;
+	font-size: 21px;
+	color: #000000;
+	width: 105px;
+	height: 25px;
+}
+
+.display-single-task-date table tr td:last-child {
+	width: 150px;
+	height: 25px;
+	font-weight: 400;
+	font-size: 21px;
+	color: #000000;
+}
+
+.display-single-task-prio {
+	padding: 0px;
+	gap: 25px;
+	width: 270px;
+	height: 33px;
+}
+
+.display-single-task-prio table tr td:first-child {
+	font-weight: 700;
+	font-size: 21px;
+	color: #000000;
+	width: 82px;
+	height: 25px;
+	padding-right: 8px;
+}
+
+.display-single-task-prio table tr td:last-child {
+	padding: 4px 18px;
+	gap: 10px;
+	width: 131px;
+	height: 33px;
+	background: #ff3d00;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 14px;
+	text-align: center;
+	color: white;
+}
+
+.assigned-to-headline h4 {
+	font-weight: 700;
+	font-size: 21px;
+	color: #000000;
+}
+
+.close-display-single-task {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+}
+
+.edit-button {
+	position: absolute;
+	bottom: 25px;
+	right: 25px;
+	height: 57px;
+	width: 57px;
+	background: #2a3647;
+	border-radius: 14px;
+	transition: all 225ms ease-in-out;
+}
+
+.display-single-tasks-container-full-size {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	top: 0px;
+	justify-content: center;
+	padding-left: 232px;
+	padding-top: 80px;
+}

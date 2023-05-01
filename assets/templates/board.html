@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" href="fonts.css" />
+	<link rel="stylesheet" href="board.css" />
+	<link rel="stylesheet" href="board-resp.css">
+	<link rel="stylesheet" href="display-single-task.css">
+	<link rel="stylesheet" href="addtaskinboard.css">
+	<link rel="stylesheet" href="addtaskinboardBacklog.css">
+	<link rel="stylesheet" href="addtask-style-copy.css">
+	<link rel="icon" type="image/vnd.microsoft.icon" href="../img/contacts/join-logo.svg">
+	<script src="../js/mini_backend.js"></script>
+	<script src="../js/main.js"></script>
+	<script src="../js/includeHTML.js"></script>
+	<script src="../js/board.js"></script>
+	<script src="../js/users.js"></script>
+	<script src="../js/addtask.js"></script>
+	<script src="../js/contacts.js"></script>
+	<script src="../js/templates/addtask-templates.js"></script>
+
+
+	<title>Board</title>
+</head>
+
+<body class="scrollable" onload="initBoard();">
+	<div id="backgblack" class="black-container d-none"></div>
+	<div class="sidemenu">
+		<include src="./sidemenue.html"></include>
+	</div>
+	</div>
+	<div class="headermenu">
+		<include src="./header.html"></include>
+	</div>
+	<div class="bottom-menu">
+		<include src="./bottom-menu.html"></include>
+	</div>
+
+	<div class="main-board-container" id="main-board-container">
+		<div class="main-headline-container">
+			<div class="headline-board">
+				<div class="search-add-task">
+					<h2 class="boardtext">Board</h2>
+					<div class="addTaskInput">
+						<div class="search-task">
+							<input id="search" placeholder="Find Task" onkeyup="search()">
+							<div id="search-btn" class="search-btn">
+								<img class="search-img c-pointer" src="../img/board/search.png" />
+							</div>
+						</div>
+						<div class="add-task">
+							<span class="respboardtext">Board</span>
+							<button onclick="showAddTaskElementTask()" class="add-task-button">
+								<span class="add-task-span">Add task</span><img class="plus-img"
+									src="../img/board/plus_only.png" />
+								<img class="plus-white-img" src="../img/board/plus_only.png" />
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mainboard">
+			<div class="column">
+				<div class="column-head">
+					<div class="toDo column-title">To do</div>
+					<img onclick="showAddTaskElementTask()" class="buttonPlus" src="../img/board/plus-button.png">
+				</div>
+				<div id="todoTable" class="column-content" ondrop="MoveTo('todoTable')" ondragover="allowDrop(event);">
+
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="column-head">
+					<div class="inProgress column-title">In progress</div>
+					<img onclick="showAddTaskElementTask()" class="buttonPlus" src="../img/board/plus-button.png">
+				</div>
+				<div id="progressTable" class="column-content" ondrop="MoveTo('progressTable')"
+					ondragover="allowDrop(event);">
+
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="column-head">
+					<div class="awaiting column-title">Awaiting Feedback</div>
+					<img onclick="showAddTaskElementTask()" class="buttonPlus" src="../img/board/plus-button.png">
+				</div>
+				<div id="feedbackTable" class="column-content" ondrop="MoveTo('feedbackTable')"
+					ondragover="allowDrop(event);">
+
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="column-head">
+					<div class="doneText column-title">Done</div>
+					<img onclick="showAddTaskElementTask()" class="buttonPlus" src="../img/board/plus-button.png">
+				</div>
+				<div id="doneTable" class="column-content" ondrop="MoveTo('doneTable')" ondragover="allowDrop(event);">
+
+				</div>
+			</div>
+		</div>
+
+		<div onclick="clearAddTaskInBoard()" id="addTaskWindow" class="add-task-background d-none">
+
+			<div onclick="doNotClose(event)" id="addTaskBox" class="add-task-content">
+				<div class="content-left">
+					<div class="margin-left">
+						<h1>Add Task</h1>
+						<div class="title-box">
+							<p class="title-font">Title</p>
+							<p class="font-red" id="missingTitle"></p>
+							<input id="title" class="title-inputfield input-font" type="text"
+								placeholder="Enter a title">
+						</div>
+						<div class="description-box">
+							<p class="description-font">Description</p>
+							<p class="font-red" id="missingDescription"></p>
+							<textarea id="description" class="description-inputfield input-font" type="text"
+								placeholder="Enter a Description"></textarea>
+						</div>
+						<div class="category-box" id="categoryContainer">
+
+							<!-- Render Category -->
+
+						</div>
+
+						<div class="assigned-box" id="contactContainer">
+
+							<!-- Render Contacts -->
+
+						</div>
+					</div>
+				</div>
+
+				<div class="parting-line"></div>
+
+				<div class="content-right">
+					<div class="taskreponsive">
+						<div class="date-box">
+							<p class="date-font">Due date</p>
+							<p class="font-red" id="missingDate"></p>
+							<input id="date" class="date-inputfield input-font" type="date" lang="en-US"
+								placeholder="dd/mm/yyyy" onclick="(this.type='date')" onblur="(this.type='date')">
+						</div>
+						<div class="prio-box">
+							<p class="prio-font">Prio</p>
+							<p class="font-red" id="missingPrio"></p>
+							<div class="prio-choice">
+								<button onclick="changePrio(0)" class="prio-inputfield-urgent">
+									<img id="urgentClicked" class="display-none"
+										src="../img/AddTask/urgent-btn-clicked.png">
+									<img id="urgent" class="" src="../img/AddTask/urgent-btn.png"></button>
+								<button onclick="changePrio(1)" class="prio-inputfield-medium">
+									<img id="mediumClicked" class="display-none"
+										src="../img/AddTask/medium-btn-clicked.png">
+									<img id="medium" src="../img/AddTask/medium-btn.png"></button>
+								<button onclick="changePrio(2)" class="prio-inputfield-low">
+									<img id="lowClicked" class="display-none" src="../img/AddTask/low-btn-clicked.png">
+									<img id="low" src="../img/AddTask/low-btn.png"></button>
+							</div>
+						</div>
+						<div class="subtask-box">
+							<p class="subtask-font">Subtasks</p>
+							<div class="subtask-inputfield input-font">
+								<input id="subtask" class="outline-none" type="text" placeholder="Add new subtask">
+								<img onclick="addSubTask()" class="hover-btn" src="../img/AddTask/plus.png">
+							</div>
+							<div id="subtasks">
+
+								<!-- Render Subtasks -->
+
+							</div>
+						</div>
+						<div class="create-cancel-container">
+							<img onclick="clearAddTaskInBoard()" class="cancel-btn" src="../img/AddTask/cancel-btn.png">
+							<img onclick="addToTaskInBoard()" class="create-btn"
+								src="../img/AddTask/createTask-btn.png">
+						</div>
+					</div>
+					<span onclick="clearAddTaskInBoard()" class="XClass">X</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="board-popup-note" id="openNote">
+		</div>
+		<div onclick="closeWindow('popupTask'); hideElement('task-edit'); hideElement('move-task-menu'); resetTaskPopup(); resetMoveTo()"
+			class="popupTaskBackground">
+			<div id="task-popup" onclick="doNotClose(event)" class="popupTask">
+				<div style="width: -webkit-fill-available;">
+					<div class="popupTaskUp">
+						<div class="desing" id="popupTaskCategoryColor" style="margin-top: 6px;
+				 border-radius: 8px;padding: 7px 28px; background-color: green;">
+							<span id="popupTaskCategoryName">Category Green</span>
+						</div>
+						<div class="display-flex">
+							<img onclick="showElement('task-edit'); setTaskPopup()" class="pen me-3"
+								src="../img/board/pen.svg" alt="Pen">
+							<div onclick="closeWindow();" id="close" class="close">x</div>
+						</div>
+					</div>
+
+					<div class="titelclass"> <span style="font-size: 37px;font-weight: 700;">
+							<span id="popupTaskTitle">Überschrift Text</span>
+						</span>
+						<div class="descText">
+							<span id="popupTaskDescription">Beschreibung</span>
+						</div>
+					</div>
+					<div class="me-0" style="margin-top: 24px;margin-right: 40px;">
+						<span style="font-weight: 700;margin-right: 30px;font-size: 18px; ">Due date:</span><span
+							class="popupDate"></span>
+					</div>
+					<div class="popupPrio">Priority:
+						<div class="popupPrioGap">&nbsp;<span id="popupTaskPrio"></span></div>
+					</div>
+					<div class="assignedTo"><span style="font-weight: 700; font-size: 18px;">Assigned To:</span>
+						<span class="popupTaskContactsClass" id="popupTaskContacts">Philipp, Metin, Peter,
+							Niklas</span>
+					</div>
+					<div id="popup-progress-bar" class="progress-bar">
+						<div id="popup-progress" class="progress"></div>
+					</div>
+					<div class="subtask-container" style="display: flex;">
+						<div class="checkboxpopup">
+							<div id="subtaskid" class="subtasks"></div>
+						</div>
+					</div>
+				</div>
+				<span onclick="" id="move-to">Verschieben</span>
+				<div id="task-edit">
+					<div class="task-edit-head mb-3">
+						<div onclick="hideElement('task-edit'); resetTaskPopup()" class="absolute close">x</div>
+					</div>
+					<form id="edit-task-form" onsubmit="">
+						<div class="input-container">
+							<span class="mb-2">Category</span>
+							<input id="category-input" class="input-edit mb-3" placeholder="Category" required
+								type="text">
+							<span class="mb-2">Title</span>
+							<input id="title-input" class="input-edit mb-3" placeholder="Title" required type="text">
+							<span class="mb-2">Description</span>
+							<input id="description-input" class="input-edit mb-3" placeholder="Description" required
+								type="text">
+							<span class="mb-2">Date</span>
+							<input id="date-input" class="input-edit mb-0_75" placeholder="dd/mm/yyyy" type="date"
+								lang="en-US" onclick="(this.type='date')">
+							<!--<input id="subtask-input" class="input-edit mb-3" placeholder="Subtask" type="text">-->
+						</div>
+						<div class="edit-button-container">
+							<button type="submit" id="edit-button"
+								class="add-task-button center min-width">Save</button>
+						</div>
+					</form>
+				</div>
+				<div id="move-task-menu">
+					<div onclick="resetMoveTo(); hideElement('move-task-menu')" class="absolute close top-5">x</div>
+					<div id="move-task-content">
+						<h2 id="task-to-move"></h2>
+						<div>
+							<div id="move-to-td" class="hover mb-2"><span>Nach </span><span class="move-to-options">To do</span> verschieben</span><br></div>
+							<div id="move-to-ip" class="hover mb-2"><span>Nach </span><span class="move-to-options">In progress</span> verschieben</span><br></div>
+							<div id="move-to-af" class="hover mb-2"><span>Nach </span><span class="move-to-options">Awaiting Feedback</span> verschieben</span><br></div>
+							<div id="move-to-d" class="hover"><span>Nach </span><span class="move-to-options">Done</span> verschieben</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+</body>
+
+</html>

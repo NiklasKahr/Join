@@ -1,0 +1,448 @@
+body {
+    background: #F5F5F5;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+::placeholder {
+    opacity: 0.5;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+}
+
+.join-logo {
+    position: absolute;
+    top: 20px;
+    left: 31px;
+    width: 100px;
+    animation: move ease-in 1000ms;
+    z-index: 3;
+}
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 80px;
+    margin-right: 114px;
+}
+
+
+
+.signUp-container {
+    display: flex;
+    align-items: center;
+    animation: fade-in ease-in 1000ms;
+}
+
+.signup-head {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.arrow-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+.arrow-left {
+    width: 25px;
+    height: 24px;
+}
+
+/* .placeholder-container{
+    width: 100%;
+} */
+
+.arrow-left-forgot {
+    width: 25px;
+    height: 24px;
+}
+
+
+.signUp-btn {
+    height: 51px;
+    width: 91px;
+
+}
+
+.signUp-text {
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    margin-right: 35px;
+}
+
+main {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    animation: fade-in ease-in 1000ms;
+}
+
+.container-layout {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+}
+
+.login-container {
+    width: 652px;
+    padding-bottom: 30px;
+}
+
+.signup-container {
+    width: 652px;
+    height: 540px;
+}
+
+.forgot-container {
+    width: 826px;
+
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.reset-container {
+    width: 826px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.instruction-text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 120%;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 35px;
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 49px;
+    line-height: 120%;
+    width: 105%;
+    text-align: center;
+}
+
+
+.blue-line {
+    width: 150px;
+    height: 0px;
+    border: 2px solid #29ABE2;
+    margin-bottom: 35px;
+}
+
+.blue-line-signup {
+    width: 100px;
+    height: 0px;
+    border: 2px solid #29ABE2;
+    margin-bottom: 20px;
+}
+
+.blue-line-forgot {
+    width: 150px;
+    height: 0px;
+    border: 2px solid #29ABE2;
+    margin-bottom: 35px;
+}
+
+.input {
+    width: 70%;
+    height: 51px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+}
+
+.bg-email {
+    background: url(../img/login/email-icon.png) no-repeat scroll 95% 16px;
+}
+
+.bg-password {
+    background: url(../img/login/password-icon.png) no-repeat scroll 95% 16px;
+}
+
+.bg-name {
+    background: url(../img/login/name-icon.png) no-repeat scroll 95% 16px;
+}
+
+.mt-49 {
+    margin-top: 29px;
+}
+
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+textarea,
+select {
+    outline: none;
+    padding-left: 20px;
+    font-size: 25px;
+}
+
+.forgotpassword-container {
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.checkbox {
+    margin-right: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    height: 16px;
+    width: 16px;
+}
+
+.remember-text {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    margin-right: 35px;
+}
+
+.forgot-text {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    color: #29ABE2;
+}
+
+.login-btn-container {
+    margin-top: 35px;
+    width: 340px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-btn-container {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn:hover {
+    transform: scale(1.06);
+    cursor: pointer;
+}
+
+.signUp-container-bottom {
+    display: none;
+    animation: fade-in ease-in 1000ms;
+}
+
+.checkbox-container {
+    display: flex;
+}
+
+.formstyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 110%;
+}
+
+.spanstyle {
+    position: relative;
+    width: 70%;
+    text-align: center;
+    line-height: 30px;
+    background: #ffe1e1;
+    color: rgb(200, 10, 10);
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.spanstylelog {
+    position: relative;
+    width: 70%;
+    text-align: center;
+    line-height: 30px;
+    background: #34d54866;
+    color: rgb(0 0 0);
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: large;
+}
+
+.btn-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    min-height: 50px;
+    margin-top: 32px;
+}
+
+.loginbtn {
+    background: #2A3647;
+    color: #fff;
+    border: none;
+    width: 145px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 21px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.guestlog {
+    background: transparent;
+    border: 1px solid #2A3647;
+    color: #2A3647;
+    text-decoration: none;
+    padding: 0px 16px;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 50px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.signupjoin {
+    background: #2A3647;
+    color: #fff;
+    border: none;
+    width: 145px;
+    height: 50px;
+    font-weight: 700;
+    font-size: 21px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none !important;
+}
+
+@media(max-width: 1000px) {
+    .join-logo {
+        width: 70px;
+    }
+
+}
+
+@media(max-width: 704px) {
+
+    .join-logo {
+        width: 50px;
+        height: 61px;
+    }
+
+    .signUp-container {
+        display: none;
+    }
+
+    .signup-container {
+        margin-top: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .signUp-container-bottom {
+        display: flex;
+        width: 100%;
+        margin-bottom: 50px;
+        justify-content: center;
+    }
+
+    header {
+        margin-top: 20px;
+        margin-left: 38px;
+    }
+
+    main {
+        margin-top: 56px;
+        /* margin-bottom: 56px; */
+    }
+
+    .login-container {
+        width: 90%;
+        margin-top: 30px;
+    }
+
+    .forgotpassword-container {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+
+    }
+
+    .checkbox-container {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .checkbox {
+        margin-left: 0;
+    }
+
+    .remember-text {
+        margin-right: 0;
+    }
+
+    .login-btn-container {
+        flex-direction: column;
+        align-items: center;
+        width: unset;
+    }
+
+    .btn-mobile {
+        width: 180px !important;
+        height: 51px !important;
+        margin-bottom: 21px;
+    }
+}
+
+@media(max-width: 420px) {
+    h1 {
+        font-size: 45px;
+    }
+
+    .instruction-text {
+        font-size: 15px;
+    }
+
+    .send-btn {
+        width: 200px;
+    }
+
+    .btn-line {
+        flex-direction: column;
+    }
+
+    .loginbtn {
+        width: 100%;
+    }
+
+    .guestlog {
+        width: 100%;
+        text-align: center;
+        padding: unset;
+    }
+}

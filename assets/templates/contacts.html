@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="shortcut icon" href="./img/">
+
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="contacts-style.css">
+    <link rel="stylesheet" href="addtaskinboard.css">
+    <link rel="stylesheet" href="addtaskinboardBacklog.css">
+    <link rel="stylesheet" href="addtask-style-copy.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="../img/contacts/join-logo.svg">
+    <script src="../js/contacts.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/mini_backend.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/addtask.js"></script>
+    <script src="../js/templates/addtask-templates.js"></script>
+</head>
+
+<body onload="initContacts(); adjustVisibility()" onresize="renderList(); adjustVisibility()">
+    <!--menus-->
+    <div class="sidemenu">
+        <include src="./sidemenue.html"></include>
+    </div>
+    <div class="bottom-menu">
+        <include src="./bottom-menu.html"></include>
+    </div>
+    <div class="headermenu">
+        <include src="./header.html"></include>
+    </div>
+
+    <div class="content-container display-flex">
+        <!--contact list container -->
+        <div id="contact-list-container">
+            <button onclick="showElement('blur-container-new')"
+                class="responsive-list-button button-blue width-fit-content white button-blue-shadow d-none">
+                New contact
+                <img class="new-contact-img ps-0_5" src="../img/contacts/new-contact.svg" alt="New contact">
+            </button>
+            <div class="button-container p-3_5 d-none">
+                <button onclick="showElement('blur-container-new')"
+                    class="button-blue width-fit-content white button-blue-shadow">
+                    New contact
+                    <img class="new-contact-img ps-0_5" src="../img/contacts/new-contact.svg" alt="New contact">
+                </button>
+            </div>
+            <!--contact list-->
+            <div id="contact-list" class="center-contacts"></div>
+        </div>
+        <!--contact display-->
+        <div id="contact-display-container">
+            <img onclick="makeListVisible()" class="contact-display-cross cursor-pointer"
+                src="../img/contacts/window-cross.svg" alt="Cross">
+            <div class="contact-display p-3_5">
+                <div class="contacts-header-container responsive-alignment-1250px">
+                    <span class="h1_1 contacts-h1">Contacts</span>
+                    <img class="separation-contacts" src="../img/contacts/separation-contacts.svg"
+                        alt="Separation line">
+                    <span class="subtitle-contacts">Better with a team</span>
+                </div>
+
+                <div id="removeClass" class="profile-display-container responsive-alignment-1120px responsive-margin d-none">
+                    <div class="picture-container display-flex align-items-center me-3 hide-1024px">
+                        <img id="picture" class="profile-display border-white" src="../img/contacts/ellipse.svg" alt="">
+                        <img id="user-icon" class="white-img d-none" src="../img/contacts/name-white.svg" alt="User">
+                        <span id="initials" class="initials-display white"></span>
+                    </div>
+
+                    <div class="name-container">
+                        <h2 id="name" class="contacts-h2"></h2>
+                        <div onclick="showElement('addTaskWindow')" class="add-task-container">
+                            <img class="plus pe-0_7 cursor-pointer" src="../img/contacts/plus.svg" alt="Plus">
+                            <span class="add-task-color cursor-pointer">Add Task</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="removeClassSecond" class="display-flex flex-direction-column d-none">
+                    <div class="display-flex align-items-center mb-2_75 responsive-alignment-1150px">
+                        <span class="contact-information font-21px me-3 responsive-margin2">Contact Information</span>
+                        <div class="display-flex align-items-center">
+                            <img onclick="showElement('blur-container-edit')" id="pen" class="pen cursor-pointer"
+                                src="../img/contacts/pen.svg" alt="Pen">
+                            <span onclick="showElement('blur-container-edit')" id="edit-span"
+                                class="darkblue cursor-pointer me-1_5">
+                                Edit contact
+                            </span>
+                            <span onclick="deleteContact(getActiveIndex())" class="darkred cursor-pointer">
+                                Delete contact
+                            </span>
+
+                        </div>
+                    </div>
+
+                    <div class="contact-data">
+                        <div class="display-flex flex-direction-column">
+                            <span class="font-weight-700 mb-0_8">Email</span>
+                            <a id="email" class="width-fit-content mb-1 cursor-pointer"></a>
+                        </div>
+
+                        <div class="display-flex flex-direction-column">
+                            <span id="phone-span" class="font-weight-700 mb-0_8">Phone</span>
+                            <a id="phone" class="width-fit-content" href=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button onclick="showElement('blur-container-new')" class="button-blue width-fit-content white">
+                    New contact
+                    <img class="new-contact-img ps-0_5" src="../img/contacts/new-contact.svg" alt="New contact">
+                </button>
+            </div>
+        </div>
+        <!--add contact-->
+        <div onclick="hideElement('blur-container-new')" id="blur-container-new"
+            class="d-none blur-container z-index-2">
+            <div onclick="doNotClose(event)" class="add-contact-container z-index-3">
+                <div class="contacts-ellipse-container-mobile">
+                    <img class="contacts-ellipse-img-mobile border-white" src="../img/contacts/ellipse.svg"
+                        alt="Ellipse">
+                    <img class="name-white-img-mobile" src="../img/contacts/name-white.svg" alt="Name white">
+                </div>
+
+                <div
+                    class="add-contact-left display-flex flex-direction-column justify-content-center align-items-start">
+                    <img onclick="hideElement('blur-container-new')"
+                        class="window-cross cross-white cursor-pointer d-none"
+                        src="../img/contacts/window-cross-white.svg" alt="Cross">
+                    <img class="join-logo mb-1" src="../img/contacts/join-logo.svg" alt="Join logo">
+                    <span class="h1_1 add-contact-h1 line-height-1 display-flex justify-content-center white mt-0_5">Add
+                        contact</span>
+                    <span class="subtitle-contacts white mt-1">Tasks are better with a team!</span>
+                    <img class="separation-overlay mt-0_5" src="../img/contacts/separation-overlay.svg"
+                        alt="Separation line">
+                </div>
+
+                <div class="add-contact-right display-flex space-between align-items-center">
+                    <img onclick="hideElement('blur-container-new')" class="window-cross cursor-pointer"
+                        src="../img/contacts/window-cross.svg" alt="Cross">
+                    <div class="contacts-ellipse-container">
+                        <img class="contacts-ellipse-img border-white" src="../img/contacts/ellipse.svg" alt="Ellipse">
+                        <img class="name-white-img" src="../img/contacts/name-white.svg" alt="Name white">
+                    </div>
+
+                    <form onsubmit="addContact(event)" class="display-flex flex-direction-column">
+                        <input class="input" id="name-input-add" pattern="[A-Za-zäöü ]*" placeholder="Name" required>
+                        <input class="input" id="email-input-add" type="email"
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$" placeholder="Email" required>
+                        <input class="input" id="phone-input-add" type="number" pattern="^(\+?[0-9][ ]*[0-9]*)*$"
+                            placeholder="Phone">
+                        <div class="display-flex center-responsive">
+                            <button onclick="hideElement('blur-container-new')" type="reset"
+                                class="button-white darkblue me-1_5">
+                                Cancel
+                                <img class="ps-1" src="../img/contacts/button-cross.svg" alt="Cross">
+                            </button>
+
+                            <button type="submit" class="button-blue white">
+                                Create contact
+                                <img class="ps-1" src="../img/contacts/checkmark.svg" alt="Ceckmark">
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--edit contact-->
+        <div onclick="hideElement(id)" id="blur-container-edit" class="d-none blur-container z-index-2">
+            <div onclick="doNotClose(event)" class="add-contact-container z-index-3">
+                <div
+                    class="add-contact-left display-flex flex-direction-column justify-content-center align-items-start">
+                    <img onclick="hideElement('blur-container-edit')"
+                        class="window-cross cross-white cursor-pointer d-none"
+                        src="../img/contacts/window-cross-white.svg" alt="Cross">
+                    <img class="join-logo mb-1" src="../img/contacts/join-logo.svg" alt="Join logo">
+                    <span class="h1_1 white line-height-1 display-flex justify-content-center mt-0_5">Edit
+                        contact</span>
+                    <img class="blue-separation-img mt-0_5" src="../img/contacts/separation-overlay.svg"
+                        alt="Separation line">
+                </div>
+
+                <div class="add-contact-right display-flex space-between align-items-center">
+                    <img onclick="hideElement('blur-container-edit')" class="window-cross cursor-pointer"
+                        src="../img/contacts/window-cross.svg" alt="Cross">
+                    <div class="contacts-ellipse-container">
+                        <img class="contacts-ellipse-img border-white" src="../img/contacts/ellipse.svg" alt="Ellipse">
+                        <img class="name-white-img" src="../img/contacts/name-white.svg" alt="Name white">
+                    </div>
+
+                    <form onsubmit="" id="edit-form" class="display-flex flex-direction-column">
+                        <input class="input" id="name-input-edit" pattern="[A-Za-zäöü ]*" placeholder="Name" required>
+                        <input class="input" id="email-input-edit" type="email"
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$" placeholder="Email">
+                        <input class="input" id="phone-input-edit" type="tel" pattern="^(\+?[0-9][ ]*[0-9]*)*$"
+                            placeholder="Phone">
+                        <div class="display-flex">
+                            <button type="submit"
+                                class="display-flex justify-content-center width-35 button-blue white m-auto">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--add task-->
+        <div onclick="hideElement('addTaskWindow')" id="addTaskWindow" class="add-task-background d-none">
+            <div onclick="doNotClose(event)" class="add-task-content">
+                <div class="content-left">
+                    <div class="margin-left">
+                        <span class="h1_1 add_task">Add Task</span>
+                        <div class="title-box">
+                            <p class="title-font">Title</p>
+                            <p class="font-red" id="missingTitle"></p>
+                            <input id="title" class="title-inputfield input-font" type="text"
+                                placeholder="Enter a title">
+                        </div>
+                        <div class="description-box">
+                            <p class="description-font">Description</p>
+                            <p class="font-red" id="missingDescription"></p>
+                            <textarea id="description" class="description-inputfield input-font" type="text"
+                                placeholder="Enter a Description"></textarea>
+                        </div>
+                        <div class="category-box" id="categoryContainer">
+
+                            <!-- Render Category -->
+
+                        </div>
+
+                        <div class="assigned-box" id="contactContainer">
+
+                            <!-- Render Contacts -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="parting-line"></div>
+
+                <div class="content-right">
+                    <div class="taskreponsive">
+                        <div class="date-box">
+                            <p class="date-font">Due date</p>
+                            <p class="font-red" id="missingDate"></p>
+                            <input id="date" class="date-inputfield input-font" type="date" lang="en-US"
+                                placeholder="dd/mm/yyyy" onclick="(this.type='date')" onblur="(this.type='date')">
+                        </div>
+                        <div class="prio-box">
+                            <p class="prio-font">Prio</p>
+                            <p class="font-red" id="missingPrio"></p>
+                            <div class="prio-choice">
+                                <button onclick="changePrio(0)" class="prio-inputfield-urgent">
+                                    <img id="urgentClicked" class="display-none"
+                                        src="../img/AddTask/urgent-btn-clicked.png">
+                                    <img id="urgent" class="" src="../img/AddTask/urgent-btn.png"></button>
+                                <button onclick="changePrio(1)" class="prio-inputfield-medium">
+                                    <img id="mediumClicked" class="display-none"
+                                        src="../img/AddTask/medium-btn-clicked.png">
+                                    <img id="medium" src="../img/AddTask/medium-btn.png"></button>
+                                <button onclick="changePrio(2)" class="prio-inputfield-low">
+                                    <img id="lowClicked" class="display-none" src="../img/AddTask/low-btn-clicked.png">
+                                    <img id="low" src="../img/AddTask/low-btn.png"></button>
+                            </div>
+                        </div>
+                        <div class="subtask-box">
+                            <p class="subtask-font">Subtasks</p>
+                            <div class="subtask-inputfield input-font">
+                                <input id="subtask" class="outline-none" type="text" placeholder="Add new subtask">
+                                <img onclick="addSubTask()" class="hover-btn" src="../img/AddTask/plus.png">
+                            </div>
+                            <div id="subtasks">
+
+                                <!-- Render Subtasks -->
+
+                            </div>
+                        </div>
+                        <div class="create-cancel-container">
+                            <img onclick="hideElement('addTaskWindow'); clearAddTaskInContacts()" class="cancel-btn"
+                                src="../img/AddTask/cancel-btn.png">
+                            <img onclick="addToTaskInContacts();showTaskAddedToBoard();" class="create-btn"
+                                src="../img/AddTask/createTask-btn.png">
+                        </div>
+                    </div>
+                    <span onclick="hideElement('addTaskWindow'); clearAddTaskInContacts()" class="XClass">X</span>
+                </div>
+            </div>
+        </div>
+        <img id="taskAddedToBoard" class="TaskAddedToBoard-Image display-none" src="../img/AddTask/TaskAddedToBoard.png"
+            alt="">
+    </div>
+</body>
+
+</html>

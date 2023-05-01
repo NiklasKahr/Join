@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="../img/contacts/join-logo.svg">
+    <title>Sign Up</title>
+    <script src="../js/users.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/mini_backend.js"></script>
+</head>
+
+<body  onload="init()">
+    <header>
+        <img class="join-logo" src="../img/sidebar/join-logo.png">
+        <a class="logout-btn d-none" onclick="logout()" id="nav-log"></a>
+    </header>
+    <main style="overflow: hidden;">
+        <div class="signup-container container-layout">
+            <a class="arrow-container" href="login.html"><img class="arrow-left"
+                src="../img/login/arrow-left.png"></a>
+            <div class="signup-head">
+
+                <h1>Sign in</h1>
+                <div class="placeholder-container"></div>
+            </div>
+            <div class="blue-line-signup"></div>
+            <form onsubmit="addUser(); return false;" class="formstyle">
+                <input class="input bg-name" type="text" name="" placeholder="Name" id="name">
+
+                <input class="input bg-email mt-49" type="email" name="" placeholder="Email" id="email" required>
+                <span class="spanstyle d-none" id="userexist">Der Nutzer existiert bereits.</span>
+
+                <input class="input bg-password mt-49" type="password" min="4" name="" placeholder="Password" id="password"
+                    required>
+                    <span class="spanstylelog d-none" id="alertspanloggin">Erfolgreich registriert !</span>
+                    <span class="spanstyle d-none" id="alertspan">Passwort muss mindestens 5 Zeichen haben.</span>
+                <div class="btn-line">
+                    <button class="signupjoin" id="sign-up" type="submit">Sign In</button>
+                </div>
+                <!--<div class="signup-btn-container">
+                    <a href="summary.html"<img class="btn" src="../img/login/signup-btn-large.png"></a>
+                </div>-->
+            </form>
+        </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="summary-style.css">
+    <script src="../js/mini_backend.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/summary.js"></script>
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/users.js"></script>
+    <script src="../js/board.js"></script>
+    
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="../img/contacts/join-logo.svg">
+    <script src=""></script>
+</head>
+
+<body onload="init();initSummary()">
+
+    <include src="header.html"></include>
+    <div class="content">
+        <div class="sidemenu">
+            <include src="./sidemenue.html"></include>
+        </div>
+        <div class="bottom-menu">
+            <include src="./bottom-menu.html"></include>
+        </div>
+        <div class="headermenu">
+            <include src="./header.html"></include>
+        </div>
+        <div class="alltasks">
+            <div class="summaryalltasks">
+                <div class="summaryinside">
+                    <h1 class="summarytext">Summary</h1> <span
+                        class="summarytext2"></span>
+                    <h2 class="nutshelltext">Everything in a nutshell!</h2>
+                    <span class="summarytext3"></span>
+                </div>
+                <div class="firstline">
+                    <button onclick="window.location.href = 'board.html';" class="summarytasksbutton">
+                        <div class="summarytasksbuttoninside">
+                            <span id="totalCount" class="number"></span>
+                            <span style="white-space: nowrap;" class="summaryfirstlinetext">Task in<br>Board</span>
+                        </div>
+                    </button>
+                    <button onclick="window.location.href = 'board.html';" class="summarytasksbutton">
+                        <div class="summarytasksbuttoninside">
+                            <span id="progressTablehtml" class="number"></span>
+                            <span class="summaryfirstlinetext">Task in Progess</span>
+                        </div>
+                    </button>
+                    <button onclick="window.location.href = 'board.html';" class="summarytasksbutton">
+                        <div class="summarytasksbuttoninside">
+                            <span id="feedbackTablehtml" class="number"></span>
+                            <span class="summaryfirstlinetext">Awaiting Feedback</span>
+                        </div>
+                </div>
+
+                <div onclick="window.location.href = 'board.html';" class="secondline">
+                    <div class="secoundlineurgentcomplete">
+                        <div class="priosummary"><img class="urgentimg" src="../img/summary/Frame 59.png">
+                        <div class="secoundlinefirsttext"><div class="urgentflex"><span id="Urgentcount" style="font-size:40px; font-weight: bold;">1</span><span
+                                style="font-size: 20px;">Urgent</span></div></div></div>
+                        <div class="secondlinemid"></div>
+                        <div class="secoundlinelasttext">
+                            <span id="UrgentDate" class="secoundlinelasttextdate"></span>
+                            <span class="secoundlinelasttextdeadline">Upcomming Deadline</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="thirdline">
+                    <button onclick="window.location.href = 'board.html';" class="thirdlinetasksbutton">
+                        <div class="thirdlinetasksbuttoninside">
+                            <img class="todoanddone borderimg" src="../img/summary/Group 7.png">
+                            <div class="thirdlinetext">
+                                <span id="todoTablehtml" class="number"></span>
+                                <span class="summaryfirstlinetext"><span>To-do</span>
+                            </div>
+                        </div>
+                    </button>
+                    <button onclick="window.location.href = 'board.html';" class="thirdlinetasksbutton">
+                        <div class="thirdlinetasksbuttoninside">
+                            <img class="todoanddone borderimg" src="../img/summary/erledigt.png">
+                            <div class="thirdlinetext">
+                                <span id="doneTablehtml" class="number"></span>
+                                <span class="summaryfirstlinetext">Done</span>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <div class="goodmorning">
+                <h2 id="lblGreetings" style="font-size: 30px;"> </h2>                
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

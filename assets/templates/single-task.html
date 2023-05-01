@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Task</title>
+		<link rel="stylesheet" href="display-single-task.css" />
+		<link rel="stylesheet" href="fonts.css" />
+		<link rel="stylesheet" href="board.css" />
+		<link rel="stylesheet" href="board-resp.css" />
+	</head>
+
+	<body>
+		<div
+			id="display-single-solo-task"
+			class="main-display-single-task-container"
+		>
+			<div
+				onclick="closeSoloTaskBigBox()"
+				class="close-display-single-task c-pointer"
+			>
+				<img
+					class="close-task"
+					src="/Join-Gruppe-381/assets/img/board/close.png"
+				/><img />
+			</div>
+			<div
+				id="display-single-task-headline"
+				class="display-single-task-headline"
+				style="background-color: rgb(0, 0, 0)"
+			>
+				<div><h4 class="d-center" id="display-single-headline">Design</h4></div>
+			</div>
+			<div class="display-single-task-title">
+				<span><h2>Implement new design</h2></span>
+			</div>
+			<div class="display-single-task-description">
+				<span>This is a test description of a design task.</span>
+			</div>
+			<div class="display-single-task-date">
+				<table>
+					<tbody>
+						<tr>
+							<td>Due date:</td>
+							<td>13-12-2022</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="display-single-task-prio">
+				<table>
+					<tbody>
+						<tr>
+							<td>Priority:</td>
+							<td
+								id="priority-display-single-color"
+								style="background-color: rgb(255, 85, 32)"
+							>
+								Urgent
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="main-assigned-to">
+				<div class="assigned-to-headline">
+					<h4>Assigned To:</h4>
+				</div>
+				<div id="current-workers" class="assigned-to-workers">
+					<div class="solo-worker-display-single">
+						<div
+							style="background: #7b22a8"
+							class="worker-name-start-letters d-center"
+						>
+							DE
+						</div>
+						<div class="edit-worker-fullname">David Eisenberg</div>
+					</div>
+					<div class="solo-worker-display-single">
+						<div
+							style="background: #ff8a00"
+							class="worker-name-start-letters d-center"
+						>
+							EV
+						</div>
+						<div class="edit-worker-fullname">Eva Fischer</div>
+					</div>
+				</div>
+			</div>
+			<div
+				onclick="editCurrentTask();"
+				id="edit-button0"
+				class="edit-button d-center c-pointer"
+				style="background-color: rgb(42, 54, 71)"
+			>
+				<img
+					id="edit-pencil0"
+					src="/Join-Gruppe-381/assets/img/board/pencil.png"
+				/>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="addtaskinboard.css">
+    <link rel="stylesheet" href="addtaskinboardBacklog.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="../img/contacts/join-logo.svg">
+    <script src="../js/addtask.js"></script>
+    <script src="../js/mini_backend.js"></script>
+    <title>Add Task</title>
+</head>
+
+<body>
+
+    <form class="add-task-content">
+        <div class="content-left">
+            <div class="margin-left">
+                <h1>Add Task</h1>
+                <div class="title-box">
+                    <p class="title-font">Title</p>
+                    <p class="font-red" id="missingTitle"></p>
+                    <input required id="title" class="title-inputfield input-font" type="text"
+                        placeholder="Enter a title">
+                </div>
+                <div class="description-box">
+                    <p class="description-font">Description</p>
+                    <p class="font-red" id="missingDescription"></p>
+                    <textarea id="description" class="description-inputfield input-font" type="text"
+                        placeholder="Enter a Description"></textarea>
+                </div>
+                <div class="category-box">
+                    <p class="category-font">Category</p>
+                    <div onclick="categorySelector()" id="categorySelector" class="category-inputfield input-font">
+                        <div class="selected-category ">
+                            <p class="selected-font">Select task category</p>
+                            <img class="arrow-down" src="../img/AddTask/arrow-down.png">
+                        </div>
+                        <div class="category-inputfield-selector display-none" id="category">
+                            <div onclick="colorSelector()" class="selected-font category-hover" value="New category">New
+                                category</div>
+                            <div class="selected-font category-hover" value="Sales">Sales<div class="blue circle"></div>
+                            </div>
+                            <div class="selected-font category-hover" value="Backoffice">Backoffice<div
+                                    class="green circle"></div>
+                            </div>
+                            <div class="selected-font category-hover" value="Product">Product<div class="red circle">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="color" class="selected-color-container display-none">
+                        <div class="new-category-inputfield inputfield-box">
+                            <input class="border-transparent" type="text" placeholder="add new category">
+                            <div class="add-cancel-box">
+                                <img onclick="addNewCategory()" class="newcategory-btn" src="../img/AddTask/check.png">
+                                <div class="line"></div>
+                                <img onclick="colorSelector()" class="newcategory-btn" src="../img/AddTask/cross.png">
+                            </div>
+                        </div>
+                        <div class="selected-color">
+                            <div class="pointer blue circle"></div>
+                            <div class="pointer red circle"></div>
+                            <div class="pointer green circle"></div>
+                            <div class="pointer orange circle"></div>
+                            <div class="pointer purple circle"></div>
+                            <div class="pointer yellow circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="assigned-box">
+                    <p class="assigned-font">Assigned to</p>
+                    <div onclick="contactSelector()" id="newContact1" class="category-inputfield input-font">
+                        <div class="selected-category">
+                            <p class="selected-font">Select contacts to assign</p>
+                            <img class="arrow-down" src="../img/AddTask/arrow-down.png">
+                        </div>
+                        <div class="category-inputfield-selector display-none" id="contact">
+                            <div class="display-flex space-between align-center category-hover">
+                                <div class="selected-font" value="New category">You</div>
+                                <input class="mr-20" type="checkbox">
+                            </div>
+                            <div class="display-flex space-between align-center category-hover">
+                                <div class="selected-font" value="Sales">Maximilian Vogel</div>
+                                <input class="mr-20" type="checkbox">
+                            </div>
+                            <div onclick="newContact()" class="display-flex space-between align-center category-hover">
+                                <div class="selected-font" value="New Invite">Invite new contact</div>
+                                <img class="mr-18 invite-img" src="../img/AddTask/invite.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="newContact2" class="new-category-inputfield inputfield-box display-none">
+                        <input class="border-transparent" type="text" placeholder="add new contact">
+                        <div class="add-cancel-box">
+                            <img onclick="addNewContact()" class="newcategory-btn" src="../img/AddTask/check.png">
+                            <div class="line"></div>
+                            <img onclick="newContact()" class="newcategory-btn" src="../img/AddTask/cross.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parting-line"></div>
+
+        <div class="content-right">
+            <div class="taskresponsive">
+                <div class="date-box">
+                    <p class="date-font">Due date</p>
+                    <p class="font-red" id="missingDate"></p>
+                    <input required id="date" class="date-inputfield input-font" type="text" lang="en-US"
+                        placeholder="dd/mm/yyyy" onclick="(this.type='date')" onblur="(this.type='text')">
+                </div>
+                <div class="prio-box">
+                    <p class="prio-font">Prio</p>
+                    <div class="prio-choice">
+                        <button onclick="changePrio(0)" class="prio-inputfield-urgent">
+                            <img id="urgentClicked" class="display-none" src="../img/AddTask/urgent-btn-clicked.png">
+                            <img id="urgent" class="" src="../img/AddTask/urgent-btn.png"></button>
+                        <button onclick="changePrio(1)" class="prio-inputfield-medium">
+                            <img id="mediumClicked" class="display-none" src="../img/AddTask/medium-btn-clicked.png">
+                            <img id="medium" src="../img/AddTask/medium-btn.png"></button>
+                        <button onclick="changePrio(2)" class="prio-inputfield-low">
+                            <img id="lowClicked" class="display-none" src="../img/AddTask/low-btn-clicked.png">
+                            <img id="low" src="../img/AddTask/low-btn.png"></button>
+                    </div>
+                </div>
+                <div class="subtask-box">
+                    <p class="subtask-font">Subtasks</p>
+                    <input required id="subtask" class="subtask-inputfield input-font" type="text"
+                        placeholder="Add new subtask">
+                    <div>
+                        <div class="checkbox-container">
+                            <input class="sub-checkbox" type="checkbox">
+                            <p class="sub-text">Subtask 1</p>
+                        </div>
+                        <div class="checkbox-container">
+                            <input class="sub-checkbox" type="checkbox">
+                            <p class="sub-text">Subtask 2</p>
+                        </div>
+                        <div class="checkbox-container">
+                            <input class="sub-checkbox" type="checkbox">
+                            <p class="sub-text">Subtask 3</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="create-cancel-container">
+                    <img onclick="deleteTask()" class="cancel-btn" src="../img/AddTask/cancel-btn.png">
+                    <img onclick="addToTask()" class="create-btn" src="../img/AddTask/createTask-btn.png">
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+</body>
+
+</html>

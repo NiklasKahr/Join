@@ -1,0 +1,54 @@
+body {
+    background-color: rgb(177, 177, 177);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.AddTaskBacklog-Content{
+    background-color: white;
+    display: flex !important;
+    width: 1116px;
+    height: 914px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}
+
+.margin-left {
+    margin-left: 74px !important;
+}
+
+h1 {
+    margin-top: 63px;
+}
+
+.parting-line {
+    margin-top: 182px;
+    height: 669px;
+    position:static!important;
+}
+
+.content-right {
+    margin-top: 182px !important;
+    margin-left: 59px !important;
+    margin-right: 80px !important;
+}
+
+.create-cancel-container{
+    display: flex!important;
+    margin-top: 122px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 84px !important;
+}
+
+.cancel-btn:hover{
+    transform: scale(1.06);
+    cursor: pointer;
+}
+
+.create-btn:hover{
+    transform: scale(1.06);
+    cursor: pointer;
+}
